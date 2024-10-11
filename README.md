@@ -27,4 +27,4 @@ To install these dotfiles on a new machine, follow these steps:
 
 ## Contribution
 
-- Rishav
+- RishavTheBrawler
