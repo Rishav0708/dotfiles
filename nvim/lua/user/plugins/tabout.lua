@@ -18,7 +18,8 @@ return {
 					{ open = "`", close = "`" },
 					{ open = "(", close = ")" },
 					{ open = "[", close = "]" },
-					-- { open = "{", close = "}" },
+					{ open = "{", close = "}" },
+					{ open = "<", close = ">" },
 				},
 				ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
 				exclude = {}, -- tabout will ignore these filetypes
@@ -29,7 +30,7 @@ return {
 			"L3MON4D3/LuaSnip",
 			"hrsh7th/nvim-cmp",
 		},
-		opt = true, -- Set this to true if the plugin is optional
+		opt = false, -- Set this to true if the plugin is optional
 		event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
 		priority = 1000,
 	},
