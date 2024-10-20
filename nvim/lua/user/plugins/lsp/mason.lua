@@ -37,7 +37,8 @@ return {
         "prismals",
         "pyright",
         "ts_ls",
-        "jdtls"
+        "jdtls",
+        "clangd",
       },
     })
 

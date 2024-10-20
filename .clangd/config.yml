@@ -1,0 +1,9 @@
+CompileFlags:
+  Add:
+  - -I/opt/homebrew/Cellar/gcc/14.1.0_1/bin/../lib/gcc/current/gcc/aarch64-apple-darwin23/14/../../../../../../include/c++/14
+  - -I/opt/homebrew/Cellar/gcc/14.1.0_1/bin/../lib/gcc/current/gcc/aarch64-apple-darwin23/14/../../../../../../include/c++/14/aarch64-apple-darwin23
+  - -I/opt/homebrew/Cellar/gcc/14.1.0_1/bin/../lib/gcc/current/gcc/aarch64-apple-darwin23/14/../../../../../../include/c++/14/backward
+  - -I/opt/homebrew/Cellar/gcc/14.1.0_1/bin/../lib/gcc/current/gcc/aarch64-apple-darwin23/14/include
+  - -I/opt/homebrew/Cellar/gcc/14.1.0_1/bin/../lib/gcc/current/gcc/aarch64-apple-darwin23/14/include-fixed
+  - -I/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include
+  - -I/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/System/Library/Frameworks
