@@ -101,6 +101,17 @@ return {
 					end,
 				})
 			end,
+			["ts_ls"] = function()
+				lspconfig["ts_ls"].setup({
+					capabilities = capabilities,
+				})
+			end,
+			-- ["angularls"] = function()
+			-- 	lspconfig["angularls"].setup({
+			-- 		capabilities = capabilities,
+			-- 		root_dir = util.root_pattern("angular.json", "project.json", "nx.json"),
+			-- 	})
+			-- end,
 			["graphql"] = function()
 				-- configure graphql language server
 				lspconfig["graphql"].setup({
