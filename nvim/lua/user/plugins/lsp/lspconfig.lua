@@ -106,12 +106,19 @@ return {
 					capabilities = capabilities,
 				})
 			end,
-			-- ["angularls"] = function()
-			-- 	lspconfig["angularls"].setup({
-			-- 		capabilities = capabilities,
-			-- 		root_dir = util.root_pattern("angular.json", "project.json", "nx.json"),
-			-- 	})
-			-- end,
+			["pylsp"] = function()
+				lspconfig["pylsp"].setup({
+					capabilities = capabilities,
+					settings = {
+						pylsp = {
+							plugins = {
+								black = { enabled = true },
+								pylint = { enabled = true, executable = "pylint" },
+							},
+						},
+					},
+				})
+			end,
 			["graphql"] = function()
 				-- configure graphql language server
 				lspconfig["graphql"].setup({
