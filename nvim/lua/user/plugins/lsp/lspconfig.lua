@@ -104,6 +104,21 @@ return {
 			["ts_ls"] = function()
 				lspconfig["ts_ls"].setup({
 					capabilities = capabilities,
+					filetypes = {
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+					},
+					root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+					init_options = {
+						preferences = {
+							importModuleSpecifierPreference = "relative",
+							jsxAttributeCompletionStyle = "auto",
+						},
+					},
 				})
 			end,
 			["pylsp"] = function()
