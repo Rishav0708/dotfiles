@@ -37,7 +37,6 @@ return {
 				"prismals",
 				"pylsp",
 				"ts_ls",
-				"jdtls",
 				"clangd",
 				-- "angularls",
 			},
@@ -51,8 +50,6 @@ return {
 				"black", -- python formatter
 				"pylint",
 				"eslint_d",
-				"java-debug-adapter",
-				"java-test",
 			},
 		})
 	end,

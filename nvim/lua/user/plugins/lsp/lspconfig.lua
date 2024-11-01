@@ -176,12 +176,6 @@ return {
 					filetypes = { "c", "cpp", "objc", "objcpp" },
 				})
 			end,
-			["jdtls"] = function()
-				lspconfig["jdtls"].setup({
-					capabilities = capabilities,
-					filetypes = { "java" },
-				})
-			end,
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
