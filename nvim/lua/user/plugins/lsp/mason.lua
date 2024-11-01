@@ -38,7 +38,6 @@ return {
 				"pylsp",
 				"ts_ls",
 				"clangd",
-				-- "angularls",
 			},
 		})
 
