@@ -18,6 +18,29 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
+		local mason_registry = require("mason-registry")
+
+		-- Find the JDTLS package in the Mason Regsitry
+		local jdtls = mason_registry.get_package("jdtls")
+		-- Find the full path to the directory where Mason has downloaded the JDTLS binaries
+		local jdtls_path = jdtls:get_install_path()
+		-- Obtain the path to the jar which runs the language server
+		local launcher = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
+		-- Declare white operating system we are using, windows use win, macos use mac
+		local SYSTEM = "MAC"
+		-- Obtain the path to configuration files for your specific operating system
+		local os_config = jdtls_path .. "/config_" .. SYSTEM
+		-- Obtain the path to the Lomboc jar
+		local lombok = jdtls_path .. "/lombok.jar"
+
+		local home = os.getenv("HOME")
+
+		local workspace_path = home .. "/code/workspace/"
+		-- Determine the project name
+		local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+		-- Create the workspace directory by concatenating the designated workspace path and the project name
+		local workspace_dir = workspace_path .. project_name
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -174,6 +197,126 @@ return {
 						"--completion-style=detailed",
 					},
 					filetypes = { "c", "cpp", "objc", "objcpp" },
+				})
+			end,
+			["jdtls"] = function()
+				lspconfig["jdtls"].setup({
+					capabilities = capabilities,
+					cmd = {
+						"java",
+						"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+						"-Dosgi.bundles.defaultStartLevel=4",
+						"-Declipse.product=org.eclipse.jdt.ls.core.product",
+						"-Dlog.protocol=true",
+						"-Dlog.level=ALL",
+						"-Xmx1g",
+						"--add-modules=ALL-SYSTEM",
+						"--add-opens",
+						"java.base/java.util=ALL-UNNAMED",
+						"--add-opens",
+						"java.base/java.lang=ALL-UNNAMED",
+						"-javaagent:" .. lombok,
+						"-jar",
+						launcher,
+						"-configuration",
+						os_config,
+						"-data",
+						workspace_dir,
+					},
+					settings = {
+						java = {
+							-- use google formatting for java
+							format = {
+								enabled = true,
+								settings = {
+									url = vim.fn.stdpath("config") .. "/lang_servers/intellij-java-google-style.xml",
+									profile = "GoogleStyle",
+								},
+							},
+							-- download sources from eclipse
+							eclipse = {
+								downloadSource = true,
+							},
+							-- Enable downloading archives from maven automatically
+							maven = {
+								downloadSources = true,
+							},
+							-- Enable method signature help
+							signatureHelp = {
+								enabled = true,
+							},
+							-- Use the fernflower decompiler when using the javap command to decompile byte code back to java code
+							contentProvider = {
+								preferred = "fernflower",
+							},
+							-- Setup automatical package import oranization on file save
+							saveActions = {
+								organizeImports = true,
+							},
+							completion = {
+								-- When using an unimported static method, how should the LSP rank possible places to import the static method from
+								favoriteStaticMembers = {
+									"org.hamcrest.MatcherAssert.assertThat",
+									"org.hamcrest.Matchers.*",
+									"org.hamcrest.CoreMatchers.*",
+									"org.junit.jupiter.api.Assertions.*",
+									"java.util.Objects.requireNonNull",
+									"java.util.Objects.requireNonNullElse",
+									"org.mockito.Mockito.*",
+								},
+								-- Try not to suggest imports from these packages in the code action window
+								filteredTypes = {
+									"com.sun.*",
+									"io.micrometer.shaded.*",
+									"java.awt.*",
+									"jdk.*",
+									"sun.*",
+								},
+								-- Set the order in which the language server should organize imports
+								importOrder = {
+									"java",
+									"jakarta",
+									"javax",
+									"com",
+									"org",
+								},
+							},
+							sources = {
+								-- How many classes from a specific package should be imported before automatic imports combine them all into a single import
+								organizeImports = {
+									starThreshold = 9999,
+									staticThreshold = 9999,
+								},
+							},
+							-- How should different pieces of code be generated?
+							codeGeneration = {
+								-- When generating toString use a json format
+								toString = {
+									template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+								},
+								-- When generating hashCode and equals methods use the java 7 objects method
+								hashCodeEquals = {
+									useJava7Objects = true,
+								},
+								-- When generating code use code blocks
+								useBlocks = true,
+							},
+						},
+						-- If changes to the project will require the developer to update the projects configuration advise the developer before accepting the change
+						configuration = {
+							updateBuildConfiguration = "interactive",
+						},
+						-- enable code lens in the lsp
+						referencesCodeLens = {
+							enabled = true,
+						},
+						-- enable inlay hints for parameter names,
+						inlayHints = {
+							parameterNames = {
+								enabled = "all",
+							},
+						},
+					},
 				})
 			end,
 			["lua_ls"] = function()
