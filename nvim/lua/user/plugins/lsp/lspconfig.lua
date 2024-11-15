@@ -18,7 +18,7 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
-		local mason_registry = require("mason-registry")
+		-- local mason_registry = require("mason-registry")
 
 		-- Find the JDTLS package in the Mason Regsitry
 		-- local jdtls = mason_registry.get_package("jdtls")
