@@ -38,7 +38,7 @@ return {
 				"pylsp",
 				"ts_ls",
 				"clangd",
-				"jdtls",
+				-- "jdtls",
 			},
 		})
 

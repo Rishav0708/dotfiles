@@ -21,17 +21,17 @@ return {
 		local mason_registry = require("mason-registry")
 
 		-- Find the JDTLS package in the Mason Regsitry
-		local jdtls = mason_registry.get_package("jdtls")
-		-- Find the full path to the directory where Mason has downloaded the JDTLS binaries
-		local jdtls_path = jdtls:get_install_path()
-		-- Obtain the path to the jar which runs the language server
-		local launcher = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
-		-- Declare white operating system we are using, windows use win, macos use mac
-		local SYSTEM = "MAC"
-		-- Obtain the path to configuration files for your specific operating system
-		local os_config = jdtls_path .. "/config_" .. SYSTEM
-		-- Obtain the path to the Lomboc jar
-		local lombok = jdtls_path .. "/lombok.jar"
+		-- local jdtls = mason_registry.get_package("jdtls")
+		-- -- Find the full path to the directory where Mason has downloaded the JDTLS binaries
+		-- local jdtls_path = jdtls:get_install_path()
+		-- -- Obtain the path to the jar which runs the language server
+		-- local launcher = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
+		-- -- Declare white operating system we are using, windows use win, macos use mac
+		-- local SYSTEM = "MAC"
+		-- -- Obtain the path to configuration files for your specific operating system
+		-- local os_config = jdtls_path .. "/config_" .. SYSTEM
+		-- -- Obtain the path to the Lomboc jar
+		-- local lombok = jdtls_path .. "/lombok.jar"
 
 		local home = os.getenv("HOME")
 
@@ -199,77 +199,77 @@ return {
 					filetypes = { "c", "cpp", "objc", "objcpp" },
 				})
 			end,
-			["jdtls"] = function()
-				lspconfig.jdtls.setup({
-					capabilities = capabilities,
-					cmd = {
-						"java",
-						"-Declipse.application=org.eclipse.jdt.ls.core.id1",
-						"-Dosgi.bundles.defaultStartLevel=4",
-						"-Declipse.product=org.eclipse.jdt.ls.core.product",
-						"-Dlog.protocol=true",
-						"-Dlog.level=ALL",
-						"-Xmx1g",
-						"--add-modules=ALL-SYSTEM",
-						"--add-opens",
-						"java.base/java.util=ALL-UNNAMED",
-						"--add-opens",
-						"java.base/java.lang=ALL-UNNAMED",
-						"-javaagent:" .. lombok,
-						"-jar",
-						launcher,
-						"-configuration",
-						os_config,
-						"-data",
-						workspace_dir,
-					},
-					settings = {
-						java = {
-							format = {
-								enabled = true,
-								settings = {
-									url = vim.fn.stdpath("config") .. "/lang_servers/intellij-java-google-style.xml",
-									profile = "GoogleStyle",
-								},
-							},
-							eclipse = { downloadSource = true },
-							maven = { downloadSources = true },
-							signatureHelp = { enabled = true },
-							contentProvider = { preferred = "fernflower" },
-							saveActions = { organizeImports = true },
-							completion = {
-								favoriteStaticMembers = {
-									"org.hamcrest.MatcherAssert.assertThat",
-									"org.hamcrest.Matchers.*",
-									"org.hamcrest.CoreMatchers.*",
-									"org.junit.jupiter.api.Assertions.*",
-									"java.util.Objects.requireNonNull",
-									"org.mockito.Mockito.*",
-								},
-								filteredTypes = {
-									"com.sun.*",
-									"io.micrometer.shaded.*",
-									"java.awt.*",
-									"jdk.*",
-									"sun.*",
-								},
-								importOrder = { "java", "jakarta", "javax", "com", "org" },
-							},
-							sources = { organizeImports = { starThreshold = 9999, staticThreshold = 9999 } },
-							codeGeneration = {
-								toString = {
-									template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
-								},
-								hashCodeEquals = { useJava7Objects = true },
-								useBlocks = true,
-							},
-						},
-						configuration = { updateBuildConfiguration = "interactive" },
-						referencesCodeLens = { enabled = true },
-						inlayHints = { parameterNames = { enabled = "all" } },
-					},
-				})
-			end,
+			-- ["jdtls"] = function()
+			-- 	lspconfig.jdtls.setup({
+			-- 		capabilities = capabilities,
+			-- 		cmd = {
+			-- 			"java",
+			-- 			"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+			-- 			"-Dosgi.bundles.defaultStartLevel=4",
+			-- 			"-Declipse.product=org.eclipse.jdt.ls.core.product",
+			-- 			"-Dlog.protocol=true",
+			-- 			"-Dlog.level=ALL",
+			-- 			"-Xmx2g",
+			-- 			"--add-modules=ALL-SYSTEM",
+			-- 			"--add-opens",
+			-- 			"java.base/java.util=ALL-UNNAMED",
+			-- 			"--add-opens",
+			-- 			"java.base/java.lang=ALL-UNNAMED",
+			-- 			"-javaagent:" .. lombok,
+			-- 			"-jar",
+			-- 			launcher,
+			-- 			"-configuration",
+			-- 			os_config,
+			-- 			"-data",
+			-- 			workspace_dir,
+			-- 		},
+			-- 		settings = {
+			-- 			java = {
+			-- 				format = {
+			-- 					enabled = true,
+			-- 					settings = {
+			-- 						url = vim.fn.stdpath("config") .. "/lang_servers/intellij-java-google-style.xml",
+			-- 						profile = "GoogleStyle",
+			-- 					},
+			-- 				},
+			-- 				eclipse = { downloadSource = true },
+			-- 				maven = { downloadSources = true },
+			-- 				signatureHelp = { enabled = true },
+			-- 				-- contentProvider = { preferred = "fernflower" },
+			-- 				saveActions = { organizeImports = true },
+			-- 				completion = {
+			-- 					favoriteStaticMembers = {
+			-- 						"org.hamcrest.MatcherAssert.assertThat",
+			-- 						"org.hamcrest.Matchers.*",
+			-- 						"org.hamcrest.CoreMatchers.*",
+			-- 						"org.junit.jupiter.api.Assertions.*",
+			-- 						"java.util.Objects.requireNonNull",
+			-- 						"org.mockito.Mockito.*",
+			-- 					},
+			-- 					filteredTypes = {
+			-- 						"com.sun.*",
+			-- 						"io.micrometer.shaded.*",
+			-- 						"java.awt.*",
+			-- 						"jdk.*",
+			-- 						"sun.*",
+			-- 					},
+			-- 					importOrder = { "java", "jakarta", "javax", "com", "org" },
+			-- 				},
+			-- 				sources = { organizeImports = { starThreshold = 9999, staticThreshold = 9999 } },
+			-- 				codeGeneration = {
+			-- 					toString = {
+			-- 						template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+			-- 					},
+			-- 					hashCodeEquals = { useJava7Objects = true },
+			-- 					useBlocks = true,
+			-- 				},
+			-- 			},
+			-- 			configuration = { updateBuildConfiguration = "interactive" },
+			-- 			referencesCodeLens = { enabled = true },
+			-- 			inlayHints = { parameterNames = { enabled = "all" } },
+			-- 		},
+			-- 	})
+			-- end,
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
