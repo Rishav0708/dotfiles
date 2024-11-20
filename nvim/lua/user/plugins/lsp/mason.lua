@@ -50,6 +50,15 @@ return {
 				"black", -- python formatter
 				"pylint",
 				"eslint_d",
+                "google-java-format",
+                "buf",
+                "shfmt",
+                "yamlfix",
+                "taplo",
+                "beautysh",
+                "htmlbeautifier",
+                "rubyfmt",
+                "black",
 			},
 		})
 	end,
