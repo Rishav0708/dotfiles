@@ -8,7 +8,7 @@ if not status then
   return
 end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
-
+print("Hello from ftplugins")
 local config = {
   cmd = {
     'java',
