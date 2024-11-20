@@ -17,29 +17,7 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
-
-		-- local mason_registry = require("mason-registry")
-
-		-- Find the JDTLS package in the Mason Regsitry
-		-- local jdtls = mason_registry.get_package("jdtls")
-		-- -- Find the full path to the directory where Mason has downloaded the JDTLS binaries
-		-- local jdtls_path = jdtls:get_install_path()
-		-- -- Obtain the path to the jar which runs the language server
-		-- local launcher = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
-		-- -- Declare white operating system we are using, windows use win, macos use mac
-		-- local SYSTEM = "MAC"
-		-- -- Obtain the path to configuration files for your specific operating system
-		-- local os_config = jdtls_path .. "/config_" .. SYSTEM
-		-- -- Obtain the path to the Lomboc jar
-		-- local lombok = jdtls_path .. "/lombok.jar"
-
-		local home = os.getenv("HOME")
-
-		local workspace_path = home .. "/code/workspace/"
-		-- Determine the project name
-		local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 		-- Create the workspace directory by concatenating the designated workspace path and the project name
-		local workspace_dir = workspace_path .. project_name
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
