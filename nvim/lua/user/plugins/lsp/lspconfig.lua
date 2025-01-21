@@ -129,10 +129,10 @@ return {
 							plugins = {
 								black = { enabled = true },
 								pylint = { enabled = true, executable = "pylint" },
-                pycodestyle = {
-                  ignore = {'W391'},
-                  maxLineLength = 100
-                },
+								pycodestyle = {
+									ignore = { "W391" },
+									maxLineLength = 100,
+								},
 							},
 						},
 					},
