@@ -27,3 +27,5 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 keymap.set("n", "<leader>/", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 keymap.set("n", "H", "^")
 keymap.set("n", "L", "$")
+
+keymap.set("n","<leader><leader>x", "<cmd>source %<CR>", {desc = "source current nvim_config"})
