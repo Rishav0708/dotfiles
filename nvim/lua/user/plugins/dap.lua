@@ -108,7 +108,10 @@ return {
 		end
 
 		-- keybindings
-		vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "debugger continue " })
-		vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "toggle breakpoint" })
+		vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Debugger Continue" })
+		vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
+		vim.keymap.set("n", "<leader>do", dap.step_over, { desc = "Debugger Step Over" })
+		vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Debugger Step Into" })
+		vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "Open Debugger REPL" })
 	end,
 }
