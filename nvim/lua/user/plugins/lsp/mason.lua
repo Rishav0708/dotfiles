@@ -59,6 +59,8 @@ return {
         "htmlbeautifier",
         "rubyfmt",
         "black",
+        "java-debug-adapter",
+        "java-test",
       },
     })
 	end,
