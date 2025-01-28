@@ -58,7 +58,7 @@ local config = {
   },
 
   init_options = {
-    bundles = {},
+    bundles = {vim.fn.glob( home .. "/java_debug/com.microsoft.java.debug.plugin/targe/com.microsoft.java.debug.plugin-*.jar" )},
   },
 }
 require('jdtls').start_or_attach(config)
@@ -69,4 +69,3 @@ vim.keymap.set('v', '<leader>crv', "<Esc><Cmd>lua require('jdtls').extract_varia
 vim.keymap.set('n', '<leader>crc', "<Cmd>lua require('jdtls').extract_constant()<CR>", { desc = 'Extract Constant' })
 vim.keymap.set('v', '<leader>crc', "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", { desc = 'Extract Constant' })
 vim.keymap.set('v', '<leader>crm', "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", { desc = 'Extract Method' })
-
