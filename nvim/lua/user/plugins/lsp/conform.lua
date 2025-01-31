@@ -12,12 +12,12 @@ return {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
-				typescriptreact =  { "prettier"},
-				json = {"prettier"},
-                graphql = {"prettier"},
+				typescriptreact = { "prettier" },
+				json = { "prettier" },
+				graphql = { "prettier" },
 				java = { "google-java-format" },
 				ruby = { "rubyfmt" },
-				markdown = {"prettier"},
+				markdown = { "prettier" },
 				erb = { "htmlbeautifier" },
 				html = { "htmlbeautifier" },
 				bash = { "beautysh" },
@@ -25,11 +25,12 @@ return {
 				rust = { "rustfmt" },
 				yaml = { "yamlfix" },
 				toml = { "taplo" },
-				css = {"prettier"},
-				scss = {"prettier"},
+				css = { "prettier" },
+				scss = { "prettier" },
 				sh = { "shfmt" },
 				go = { "gofmt" },
-                python = {"black"}
+				python = { "black" },
+        xml = {"xmlformatter"}
 			},
 		})
 

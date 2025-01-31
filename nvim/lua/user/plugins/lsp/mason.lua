@@ -59,6 +59,7 @@ return {
         "htmlbeautifier",
         "rubyfmt",
         "black",
+        "xmlformatter",
         "java-debug-adapter",
         "java-test",
       },
