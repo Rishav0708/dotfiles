@@ -8,7 +8,6 @@ if not status then
 	return
 end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
-print("Hello from ftplugins")
 local config = {
 	cmd = {
 		"java",
@@ -17,7 +16,8 @@ local config = {
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
-		"-Xmx1g",
+    "-Xms1g",
+		"-Xmx2g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
 		"java.base/java.util=ALL-UNNAMED",
@@ -37,6 +37,9 @@ local config = {
 		java = {
 			signatureHelp = { enabled = true },
 			extendedClientCapabilities = extendedClientCapabilities,
+      eclipse = {
+        downloadSources = true,
+      },
 			maven = {
 				downloadSources = true,
 			},
@@ -69,7 +72,6 @@ local config = {
 	},
 }
 require("jdtls").start_or_attach(config)
-
 vim.keymap.set("n", "<leader>co", "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = "Organize Imports" })
 vim.keymap.set("n", "<leader>crv", "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = "Extract Variable" })
 vim.keymap.set(
