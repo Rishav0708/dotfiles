@@ -113,5 +113,6 @@ return {
 		vim.keymap.set("n", "<leader>do", dap.step_over, { desc = "Debugger Step Over" })
 		vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Debugger Step Into" })
 		vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "Open Debugger REPL" })
+    vim.keymap.set('n', '<leader>dx', ':DapDisconnect<CR>', {desc = "debugger close"})
 	end,
 }

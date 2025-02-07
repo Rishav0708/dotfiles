@@ -29,3 +29,6 @@ keymap.set("n", "H", "^")
 keymap.set("n", "L", "$")
 
 keymap.set("n","<leader><leader>x", "<cmd>source %<CR>", {desc = "source current nvim_config"})
+
+-- Dismiss Noice Message
+vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", {desc = "Dismiss Noice Message"})
