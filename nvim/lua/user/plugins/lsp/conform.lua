@@ -30,7 +30,7 @@ return {
 				sh = { "shfmt" },
 				go = { "gofmt" },
 				python = { "black" },
-        xml = {"xmlformatter"}
+				xml = { "xmlformatter" },
 			},
 		})
 

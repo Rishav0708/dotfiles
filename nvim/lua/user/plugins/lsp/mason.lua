@@ -43,26 +43,27 @@ return {
 		})
 
 		mason_tool_installer.setup({
-      ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint",
-        "eslint_d",
-        "google-java-format",
-        "buf",
-        "shfmt",
-        "yamlfix",
-        "taplo",
-        "beautysh",
-        "htmlbeautifier",
-        "rubyfmt",
-        "black",
-        "xmlformatter",
-        "java-debug-adapter",
-        "java-test",
-      },
-    })
+			ensure_installed = {
+				"prettier", -- prettier formatter
+				"stylua", -- lua formatter
+				"isort", -- python formatter
+				"black", -- python formatter
+				"pylint",
+				"eslint_d",
+				"google-java-format",
+				"buf",
+				"shfmt",
+				"yamlfix",
+				"taplo",
+				"beautysh",
+				"htmlbeautifier",
+				"rubyfmt",
+				"black",
+				"xmlformatter",
+				"java-debug-adapter",
+				"java-test",
+				"cmakelint",
+			},
+		})
 	end,
 }

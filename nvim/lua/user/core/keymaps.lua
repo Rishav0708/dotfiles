@@ -31,4 +31,18 @@ keymap.set("n", "L", "$")
 keymap.set("n","<leader><leader>x", "<cmd>source %<CR>", {desc = "source current nvim_config"})
 
 -- Dismiss Noice Message
-vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", {desc = "Dismiss Noice Message"})
+keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", {desc = "Dismiss Noice Message"})
+
+-- -- code folding with ufo
+-- keymap.set('n', 'zR', require('ufo').openAllFolds)
+-- keymap.set('n', 'zM', require('ufo').closeAllFolds)
+-- keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
+-- keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+-- keymap.set('n', 'K', function()
+--     local winid = require('ufo').peekFoldedLinesUnderCursor()
+--     if not winid then
+--         -- choose one of coc.nvim and nvim lsp
+--         vim.fn.CocActionAsync('definitionHover') -- coc.nvim
+--         vim.lsp.buf.hover()
+--     end
+-- end)
