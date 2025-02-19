@@ -39,6 +39,7 @@ return {
 				"ts_ls",
 				"clangd",
 				"jdtls",
+        "zls",
 			},
 		})
 
@@ -63,6 +64,7 @@ return {
 				"java-debug-adapter",
 				"java-test",
 				"cmakelint",
+        "rust-analyzer",
 			},
 		})
 	end,

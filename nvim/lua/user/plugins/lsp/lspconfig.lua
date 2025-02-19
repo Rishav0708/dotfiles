@@ -184,6 +184,15 @@ return {
 					filetypes = { "c", "cpp", "objc", "objcpp" },
 				})
 			end,
+      ['rust-analyzer'] = function ()
+        lspconfig['rust-analyzer'].setup({
+          settings = {
+            diagnostics = {
+              enabled = true,
+            }
+          }
+        })
+      end,
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
